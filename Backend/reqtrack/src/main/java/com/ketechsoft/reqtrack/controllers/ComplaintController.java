@@ -20,9 +20,9 @@ public class ComplaintController {
     private final ComplaintService complaintService;
 
     @PostMapping("/")
-    @ApiOperation(value = "Create Operation")
-    public ResponseEntity<ComplaintDto> addComplaint(@RequestBody ComplaintDto complaintDTO) {
-        return ResponseEntity.ok(complaintService.addComplaint(complaintDTO));
+    @ApiOperation(value = "Create Operation", response = ComplaintDto.class)
+    public ResponseEntity<ComplaintDto> addComplaint(@RequestBody ComplaintDto complaintDto) {
+        return ResponseEntity.ok(complaintService.addComplaint(complaintDto));
     }
 
     @PutMapping("/")

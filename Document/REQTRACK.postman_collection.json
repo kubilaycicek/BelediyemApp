@@ -14,6 +14,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDAxNjYsImV4cCI6MTU4NTU4NjU2Nn0.HoHh05UrKMR-Zu3zZeJ5RkcpQePhI9dgT2-kxIqt7cQ"
+							}
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -36,7 +42,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODQ1MzYxOTMsImV4cCI6MTU4NDYyMjU5M30.l1Kp8LoN66zHub_eVgF1UbDnGdC99bTaE3nmeb-5w4M"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDAxNjYsImV4cCI6MTU4NTU4NjU2Nn0.HoHh05UrKMR-Zu3zZeJ5RkcpQePhI9dgT2-kxIqt7cQ"
 							}
 						},
 						"method": "POST",
@@ -117,7 +123,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODQ1MzYxOTMsImV4cCI6MTU4NDYyMjU5M30.l1Kp8LoN66zHub_eVgF1UbDnGdC99bTaE3nmeb-5w4M"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDAxNjYsImV4cCI6MTU4NTU4NjU2Nn0.HoHh05UrKMR-Zu3zZeJ5RkcpQePhI9dgT2-kxIqt7cQ"
 							}
 						},
 						"method": "POST",
@@ -137,7 +143,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\":0,\n\t\"name\":\"test\",\n\t\"description\":\"test\",\n\t\"departmentDto\":{\n\t\t\"id\":3,\n\t\t\"name\":\"\",\n\t    \"description\":\"\"\n\t}\n}",
+							"raw": "{\n\t\"id\":0,\n\t\"name\":\"test\",\n\t\"description\":\"test\",\n\t\"departmentDto\":{\n\t\t\"id\":1,\n\t\t\"name\":\"\",\n\t    \"description\":\"\"\n\t}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,7 +193,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODQ1MzU4NzUsImV4cCI6MTU4NDYyMjI3NX0.eVSK067VJYL0EB9chbS68JMkGAh5iMTiW5L0nX0PqQE"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDAxNjYsImV4cCI6MTU4NTU4NjU2Nn0.HoHh05UrKMR-Zu3zZeJ5RkcpQePhI9dgT2-kxIqt7cQ"
 							}
 						},
 						"method": "GET",
@@ -292,7 +298,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODQ1MzU4NzUsImV4cCI6MTU4NDYyMjI3NX0.eVSK067VJYL0EB9chbS68JMkGAh5iMTiW5L0nX0PqQE"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrdWJpbGF5Iiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDA1NzIsImV4cCI6MTU4NTU4Njk3Mn0.cj4kaBtWtK96S67vr9FrjHN2A2nkxQ79NKO55Pp-4wc"
 							}
 						},
 						"method": "GET",
@@ -353,6 +359,12 @@
 				{
 					"name": "COMPLAINT_STATUS_CREATE",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3J0ZWtzIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDAxNjYsImV4cCI6MTU4NTU4NjU2Nn0.HoHh05UrKMR-Zu3zZeJ5RkcpQePhI9dgT2-kxIqt7cQ"
+							}
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -510,7 +522,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"username\":\"korteks\",\n\t\"password\":\"1\"\n}",
+							"raw": "{\n\t\"username\":\"kubilay\",\n\t\"password\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -611,6 +623,64 @@
 							}
 						],
 						"url": "localhost:8080/user/list"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "COMPLAINT",
+			"item": [
+				{
+					"name": "COMPLAINT_LIST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/complaint/list"
+					},
+					"response": []
+				},
+				{
+					"name": "COMPLAINT_CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrdWJpbGF5Iiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODU1MDExODAsImV4cCI6MTU4NTU4NzU4MH0.Oi3O4kIqa4u5QpQvwhUSDxemj7ljVaG-EnKoqbwBF-Y"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"categoryDto\": {\n      \"id\": 1\n    },\n  \"complaintGalleries\": [\n    {\"id\":0,\n      \"imageUrl\": \"string\"\n    }\n  ],\n  \"complaintStatusDto\": {\n    \"id\": 1\n  },\n  \"description\": \"string\",\n  \"id\": 0,\n  \"userDto\": {\n    \"id\": 1\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/complaint/"
+					},
+					"response": []
+				},
+				{
+					"name": "COMPLAINT_EDIT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMiLCJzY29wZXMiOlt7ImF1dGhvcml0eSI6IlVTRVIifV0sImlhdCI6MTU4NTQ5NzczNCwiZXhwIjoxNTg1NTg0MTM0fQ.vlzCp6VgSDu_m3mCOtHb8XD6XCxYjn3A7ADSCCCZFCA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"categoryDto\": {\n      \"id\": 1\n    },\n  \"complaintGalleries\": [\n    {\"id\":0,\n      \"imageUrl\": \"string\"\n    }\n  ],\n  \"complaintStatusDto\": {\n    \"id\": 1\n  },\n  \"description\": \"string\",\n  \"id\": 0,\n  \"userDto\": {\n    \"id\": 1\n  }\n}"
+						},
+						"url": "localhost:8080/complaint/"
 					},
 					"response": []
 				}

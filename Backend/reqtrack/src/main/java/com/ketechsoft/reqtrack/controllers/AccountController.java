@@ -26,7 +26,6 @@ public class AccountController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<TokenDto> login(@RequestBody LoginDto request) throws AuthenticationException {
-        System.out.println("login basladı");
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         final User user = userRepository.findByUsername(request.getUsername());
