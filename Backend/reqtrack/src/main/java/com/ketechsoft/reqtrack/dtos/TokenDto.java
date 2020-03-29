@@ -4,11 +4,13 @@ import lombok.Data;
 
 @Data
 public class TokenDto {
+    private long id;
     private String username;
     private String token;
 
-    public TokenDto(String username, String token) {
-        this.username=username;
-        this.token=token;
+    public TokenDto(long id, String username, String token) {
+        this.id = id;
+        this.username = username;
+        this.token = token;
     }
 }
