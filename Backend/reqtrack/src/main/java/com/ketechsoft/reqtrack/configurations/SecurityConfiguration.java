@@ -50,6 +50,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/api/token/register", "/api/token").permitAll()
                 .antMatchers("/api/token/login", "/api/token").permitAll()
+                .antMatchers(HttpMethod.GET, "/v2/api-docs").permitAll().antMatchers(
+                HttpMethod.GET,
+                "/",
+                "/v2/api-docs",           // swagger
+                "/webjars/**",            // swagger-ui webjars
+                "/swagger-resources/**",  // swagger-ui resources
+                "/configuration/**",      // swagger configuration
+                "/*.html",
+                "/favicon.ico",
+                "/**/*.html",
+                "/**/*.css",
+                "/**/*.js"
+        ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

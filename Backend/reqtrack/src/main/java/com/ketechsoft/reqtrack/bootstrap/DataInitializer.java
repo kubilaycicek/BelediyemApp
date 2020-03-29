@@ -1,5 +1,6 @@
 package com.ketechsoft.reqtrack.bootstrap;
 
+
 import com.ketechsoft.reqtrack.dtos.*;
 import com.ketechsoft.reqtrack.services.*;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
+    private final CategoryService categoryService;
+    private final DepartmentService departmentService;
     private final UserTypeService userTypeService;
+    private final ComplaintStatusService complaintStatusService;
     private final UserService userService;
 
     private void loadData() {
