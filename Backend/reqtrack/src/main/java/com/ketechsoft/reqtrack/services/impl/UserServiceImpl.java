@@ -29,13 +29,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto addUser(UserDto userDto) {
-        return null;
+        User user = userConverter.convertToUser(userDto);
+        user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        user.setUserType(userTypeRepository.findById(userDto.getId()));
+        return userConverter.convertToUserDto(userRepository.save(user));
     }
 
     @Override
     public UserDto updateUser(UserDto userDto) {
-
-        return null;
+        User user = userRepository.findById(userDto.getId());
+        if (user != null) {
+            user.setName(userDto.getName());
+            user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+            user.setPhone(userDto.getPhone());
+            user.setUsername(userDto.getUsername());
+            user.setUserType(userTypeRepository.findById(userDto.getId()));
+            user.setEmail(userDto.getEmail());
+            user.setAddress(userDto.getAddress());
+            return userConverter.convertToUserDto(userRepository.save(user));
+        } else {
+            throw new IllegalArgumentException("User does not exist ID: " + userDto.getId());
+        }
     }
 
     @Override

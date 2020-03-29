@@ -13,8 +13,8 @@ public class UserDto extends BaseDto {
     private String surname;
     @ApiModelProperty(value = "PHONE")
     private String phone;
-    @ApiModelProperty(value = "TC NUMBER")
-    private long tcNumber;
+    @ApiModelProperty(value = "USERNAME")
+    private String username;
     @ApiModelProperty(value = "EMAIL")
     private String email;
     @ApiModelProperty(value = "PASSWORD")

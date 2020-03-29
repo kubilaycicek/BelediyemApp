@@ -3,7 +3,6 @@ package com.ketechsoft.reqtrack.services.impl;
 import com.ketechsoft.reqtrack.converters.DepartmentConverter;
 import com.ketechsoft.reqtrack.dtos.DepartmentDto;
 import com.ketechsoft.reqtrack.models.Department;
-import com.ketechsoft.reqtrack.models.User;
 import com.ketechsoft.reqtrack.repositories.DepartmentRepository;
 import com.ketechsoft.reqtrack.services.DepartmentService;
 import lombok.RequiredArgsConstructor;
