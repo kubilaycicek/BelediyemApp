@@ -19,12 +19,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByTcNumber(username);
         if(user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core
-                .userdetails.User(user.getUsername(),
+                .userdetails.User(user.getTcNumber(),
                 user.getPassword(),
                 Arrays.asList(new SimpleGrantedAuthority("USER")));
     }

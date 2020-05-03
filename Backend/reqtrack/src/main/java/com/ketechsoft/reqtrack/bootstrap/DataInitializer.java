@@ -21,10 +21,14 @@ public class DataInitializer implements CommandLineRunner {
         userTypeService.addUserType(new UserTypeDto("USER",
                 "Standart Kullanici"));
 
-        userService.register(new RegistrationDto("korteks",
-                "korteks",
-                "1",
-                "korteks"));
+        RegistrationDto registrationDto =new RegistrationDto();
+        registrationDto.setEmail("korteks");
+        registrationDto.setNameSurname("korteks");
+        registrationDto.setPassword("1");
+        registrationDto.setUsername("korteks");
+        registrationDto.setTcNumber("korteks");
+
+        userService.register(registrationDto);
     }
 
     @Override
