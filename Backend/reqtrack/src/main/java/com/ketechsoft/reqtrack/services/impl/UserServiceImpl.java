@@ -71,8 +71,9 @@ public class UserServiceImpl implements UserService {
             user.setEmail(registrationDTO.getEmail());
             user.setName(registrationDTO.getNameSurname());
             user.setPassword(bCryptPasswordEncoder.encode(registrationDTO.getPassword()));
-            user.setUsername(registrationDTO.getEmail());
+            user.setUsername(registrationDTO.getUsername());
             user.setUserType(userTypeRepository.findById(1));
+            user.setTcNumber(registrationDTO.getTcNumber());
             userRepository.save(user);
             return Boolean.TRUE;
         } catch (Exception e) {
