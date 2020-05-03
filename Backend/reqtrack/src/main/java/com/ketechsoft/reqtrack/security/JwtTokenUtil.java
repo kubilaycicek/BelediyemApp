@@ -45,7 +45,7 @@ public class JwtTokenUtil {
     }
 
     public String generateToken(User user) {
-        return doGenerateToken(user.getUsername());
+        return doGenerateToken(user.getTcNumber());
     }
 
     private String doGenerateToken(String subject) {

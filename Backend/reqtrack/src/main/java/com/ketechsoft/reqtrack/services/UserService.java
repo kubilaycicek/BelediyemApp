@@ -1,6 +1,7 @@
 package com.ketechsoft.reqtrack.services;
 
 import com.ketechsoft.reqtrack.dtos.RegistrationDto;
+import com.ketechsoft.reqtrack.dtos.RegistrationResultDto;
 import com.ketechsoft.reqtrack.dtos.UserDto;
 import com.ketechsoft.reqtrack.models.User;
 
@@ -11,5 +12,5 @@ public interface UserService {
     UserDto updateUser(UserDto userDto);
     UserDto getById(long userId);
     List<User> getAll();
-    Boolean register(RegistrationDto registrationDTO);
+    RegistrationResultDto register(RegistrationDto registrationDTO);
 }

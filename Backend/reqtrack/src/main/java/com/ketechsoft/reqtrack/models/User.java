@@ -14,8 +14,8 @@ public class User extends BaseEntity {
     private String name;
     @Column
     private String surname;
-    @Column
-    private String username;
+  /*  @Column
+    private String username;*/
     @Column
     private String phone;
     @Column

@@ -21,14 +21,15 @@ public class DataInitializer implements CommandLineRunner {
         userTypeService.addUserType(new UserTypeDto("USER",
                 "Standart Kullanici"));
 
-        RegistrationDto registrationDto =new RegistrationDto();
-        registrationDto.setEmail("korteks");
-        registrationDto.setNameSurname("korteks");
-        registrationDto.setPassword("1");
-        registrationDto.setUsername("korteks");
-        registrationDto.setTcNumber("korteks");
-
-        userService.register(registrationDto);
+        UserDto rgsDto =new UserDto();
+        rgsDto.setName("korteks");
+        rgsDto.setSurname("korteks");
+        rgsDto.setTcNumber("1");
+        rgsDto.setPassword("1");
+        rgsDto.setEmail("korteks");
+        rgsDto.setPhone("5544062486");
+        rgsDto.setUserTypeDto(userTypeService.getById(1));
+        userService.addUser(rgsDto);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.ketechsoft.reqtrack.controllers;
 
+import com.ketechsoft.reqtrack.dtos.RegistrationResultDto;
 import com.ketechsoft.reqtrack.models.User;
 import com.ketechsoft.reqtrack.repositories.UserRepository;
 import com.ketechsoft.reqtrack.dtos.LoginDto;
@@ -28,15 +29,14 @@ public class AccountController {
     public ResponseEntity<TokenDto> login(@RequestBody LoginDto request) throws AuthenticationException {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-        final User user = userRepository.findByUsername(request.getUsername());
+        final User user = userRepository.findByTcNumber(request.getUsername());
         final String token = jwtTokenUtil.generateToken(user);
         final long id = user.getId();
-        return ResponseEntity.ok(new TokenDto(id,user.getUsername(), token));
+        return ResponseEntity.ok(new TokenDto(id,user.getTcNumber(), token));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> register(@RequestBody RegistrationDto registrationDto) throws AuthenticationException {
-        Boolean response = userService.register(registrationDto);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<RegistrationResultDto> register(@RequestBody RegistrationDto registrationDto) throws AuthenticationException {
+        return ResponseEntity.ok(userService.register(registrationDto));
     }
 }
