@@ -15,6 +15,9 @@ public class Complaint extends BaseEntity{
     @Column
     private String description;
 
+    @Column
+    private String location;
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;

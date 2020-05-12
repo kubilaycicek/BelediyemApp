@@ -6,10 +6,12 @@ import com.ketechsoft.reqtrack.models.ComplaintGallery;
 import com.ketechsoft.reqtrack.repositories.ComplaintGalleryRepository;
 import com.ketechsoft.reqtrack.repositories.ComplaintRepository;
 import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
+import com.ketechsoft.reqtrack.utils.ImageConverter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +24,12 @@ public class ComplaintGalleryServiceImpl implements ComplaintGalleryService {
     private final ModelMapper modelMapper;
 
     @Override
-    public void addGallery(long complaintId, List<ComplaintGalleryDto> complaintGalleryDtoList) {
+    public void addGallery(long complaintId, List<ComplaintGalleryDto> complaintGalleryDtoList) throws IOException {
         Complaint complaint = complaintRepository.findById(complaintId);
         if (complaint != null) {
             for (ComplaintGalleryDto complaintGalleryDto : complaintGalleryDtoList) {
                 ComplaintGallery complaintGallery = new ComplaintGallery();
-                complaintGallery.setImageUrl(complaintGalleryDto.getImageUrl());
+                complaintGallery.setImageUrl(ImageConverter.saveImageAndGetImageUrlToString(complaintGalleryDto.getImageUrl()));
                 complaintGallery.setComplaint(complaint);
                 complaintGalleryRepository.save(complaintGallery);
             }

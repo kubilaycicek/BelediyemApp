@@ -14,6 +14,8 @@ public class ComplaintDto extends BaseDto {
 
     @ApiModelProperty(value = "DESCRIPTION")
     private String description;
+    @ApiModelProperty(value = "LOCATION")
+    private String location;
     @ApiModelProperty(value = "USER")
     private UserDto userDto;
     @ApiModelProperty(value = "CATEGORY")
