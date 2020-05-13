@@ -14,8 +14,6 @@ public class User extends BaseEntity {
     private String name;
     @Column
     private String surname;
-  /*  @Column
-    private String username;*/
     @Column
     private String phone;
     @Column
@@ -27,10 +25,10 @@ public class User extends BaseEntity {
     @Column
     private String address;
 
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserType userType;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             targetEntity = Complaint.class, mappedBy = "user")

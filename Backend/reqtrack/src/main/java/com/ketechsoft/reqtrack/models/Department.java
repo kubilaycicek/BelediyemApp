@@ -17,7 +17,7 @@ public class Department extends BaseEntity {
     @Column
     private String description;
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,
+    @OneToMany(fetch = FetchType.EAGER,
             targetEntity = Category.class,
             mappedBy = "department")
     private List<Category> categoryList;

@@ -18,22 +18,18 @@ public class Complaint extends BaseEntity{
     @Column
     private String location;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Category category;
 
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private ComplaintStatus complaintStatus;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL,targetEntity = ComplaintGallery.class,fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = ComplaintGallery.class,fetch = FetchType.LAZY)
     @JoinColumn
     private List<ComplaintGallery> complaintGalleries;
 }
