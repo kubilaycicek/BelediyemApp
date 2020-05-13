@@ -6,7 +6,7 @@ import com.ketechsoft.reqtrack.models.ComplaintGallery;
 import com.ketechsoft.reqtrack.repositories.ComplaintGalleryRepository;
 import com.ketechsoft.reqtrack.repositories.ComplaintRepository;
 import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
-import com.ketechsoft.reqtrack.utils.ImageConverter;
+import com.ketechsoft.reqtrack.utils.ImageConverterUtil;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class ComplaintGalleryServiceImpl implements ComplaintGalleryService {
         if (complaint != null) {
             for (ComplaintGalleryDto complaintGalleryDto : complaintGalleryDtoList) {
                 ComplaintGallery complaintGallery = new ComplaintGallery();
-                complaintGallery.setImageUrl(ImageConverter.saveImageAndGetImageUrlToString(complaintGalleryDto.getImageUrl()));
+                complaintGallery.setImageUrl(ImageConverterUtil.saveImageAndGetImageUrlToString(complaintGalleryDto.getImageUrl()));
                 complaintGallery.setComplaint(complaint);
                 complaintGalleryRepository.save(complaintGallery);
             }

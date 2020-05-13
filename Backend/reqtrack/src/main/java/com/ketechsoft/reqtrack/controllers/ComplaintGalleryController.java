@@ -8,6 +8,8 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class ComplaintGalleryController {
     private final ComplaintGalleryService complaintGalleryService;
 
     @PostMapping("/{complaintID}")
-    public void addComplaintGallery(@RequestBody List<ComplaintGalleryDto> complaintGalleryDTOList, @PathVariable(name = "complaintID") long complaintID) {
+    public void addComplaintGallery(@RequestBody List<ComplaintGalleryDto> complaintGalleryDTOList, @PathVariable(name = "complaintID") long complaintID) throws IOException {
         complaintGalleryService.addGallery(complaintID, complaintGalleryDTOList);
     }
 

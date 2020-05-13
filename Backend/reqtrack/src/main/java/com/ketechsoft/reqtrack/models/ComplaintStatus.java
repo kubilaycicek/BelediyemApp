@@ -18,6 +18,6 @@ public class ComplaintStatus extends BaseEntity  {
     private String description;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Complaint.class,  mappedBy = "complaintStatus")
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Complaint.class,  mappedBy = "complaintStatus")
     private List<Complaint> complaintList;
 }

@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 
-public class ImageConverter {
+public class ImageConverterUtil {
     public static String ConvertImageFileToBase64String(String imagePath) throws IOException {
         String base64Image = "";
         File file = new File(imagePath);
@@ -42,7 +42,7 @@ public class ImageConverter {
 
         filePath = Paths.get(root.toString(),"src", "main", "resources","test",java.util.UUID.randomUUID()+ ".jpg");
 
-        ImageConverter.ConvertBase64ToImageFile(base64String,filePath.toFile().getAbsolutePath());
+        ImageConverterUtil.ConvertBase64ToImageFile(base64String,filePath.toFile().getAbsolutePath());
 
         System.out.println("New File : "+ filePath.toFile().getPath());
         System.out.println("New Image : "+ filePath.getFileName().toString());

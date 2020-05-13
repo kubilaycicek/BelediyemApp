@@ -2,6 +2,12 @@ package com.ketechsoft.reqtrack.bootstrap;
 
 
 import com.ketechsoft.reqtrack.dtos.*;
+import com.ketechsoft.reqtrack.models.Category;
+import com.ketechsoft.reqtrack.models.ComplaintStatus;
+import com.ketechsoft.reqtrack.models.Department;
+import com.ketechsoft.reqtrack.repositories.CategoryRepository;
+import com.ketechsoft.reqtrack.repositories.ComplaintStatusRepository;
+import com.ketechsoft.reqtrack.repositories.DepartmentRepository;
 import com.ketechsoft.reqtrack.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -11,10 +17,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final CategoryService categoryService;
-    private final DepartmentService departmentService;
+    private final CategoryRepository categoryRepository;
+    private final DepartmentRepository departmentRepository;
     private final UserTypeService userTypeService;
-    private final ComplaintStatusService complaintStatusService;
+    private final ComplaintStatusRepository complaintStatusRepository;
     private final UserService userService;
 
     private void loadData() {
@@ -30,6 +36,24 @@ public class DataInitializer implements CommandLineRunner {
         rgsDto.setPhone("5544062486");
         rgsDto.setUserTypeDto(userTypeService.getById(1));
         userService.addUser(rgsDto);
+
+        Department department = new Department();
+        department.setName("Department-1");
+        department.setDescription("Test");
+        departmentRepository.save(department);
+
+        Category category =new Category();
+        category.setName("Category -1 ");
+        category.setDescription("Test");
+        category.setDepartment(department);
+        categoryRepository.save(category);
+
+        ComplaintStatus complaintStatus = new ComplaintStatus();
+        complaintStatus.setName("Status - 1");
+        complaintStatus.setDescription("Test");
+        complaintStatusRepository.save(complaintStatus);
+
+
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Category extends BaseEntity {
     @Column
     private String description;
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false, targetEntity = Department.class)
+    @ManyToOne(fetch = FetchType.LAZY ,optional = false,targetEntity = Department.class)
     private Department department;
 
     @JsonIgnore

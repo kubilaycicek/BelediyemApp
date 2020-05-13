@@ -19,7 +19,6 @@ public class Department extends BaseEntity {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,
             targetEntity = Category.class,
-            cascade = CascadeType.ALL,
             mappedBy = "department")
     private List<Category> categoryList;
 }
