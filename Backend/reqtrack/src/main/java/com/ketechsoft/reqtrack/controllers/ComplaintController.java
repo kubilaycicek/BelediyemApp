@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class ComplaintController {
 
     @PostMapping("/")
     @ApiOperation(value = "Create Operation", response = ComplaintDto.class)
-    public ResponseEntity<ComplaintDto> addComplaint(@RequestBody ComplaintDto complaintDto) {
+    public ResponseEntity<ComplaintDto> addComplaint(@RequestBody ComplaintDto complaintDto) throws IOException {
         return ResponseEntity.ok(complaintService.addComplaint(complaintDto));
     }
 

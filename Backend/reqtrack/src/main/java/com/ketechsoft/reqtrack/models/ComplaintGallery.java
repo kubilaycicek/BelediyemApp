@@ -1,6 +1,5 @@
 package com.ketechsoft.reqtrack.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,8 +13,9 @@ public class ComplaintGallery extends BaseEntity {
     @Lob
     private String imageUrl;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER
+            //,cascade = CascadeType.PERSIST
+    )
     @JoinColumn
     private Complaint complaint;
 }

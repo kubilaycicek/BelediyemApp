@@ -10,10 +10,12 @@ import com.ketechsoft.reqtrack.models.Complaint;
 import com.ketechsoft.reqtrack.models.ComplaintStatus;
 import com.ketechsoft.reqtrack.models.User;
 import com.ketechsoft.reqtrack.repositories.*;
+import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
 import com.ketechsoft.reqtrack.services.ComplaintService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +28,11 @@ public class ComplaintServiceImpl implements ComplaintService {
     private final UserRepository userRepository;
     private final ComplaintStatusRepository complaintStatusRepository;
     private final ComplaintConverter complaintConverter;
+    private final ComplaintGalleryService complaintGalleryService;
 
 
     @Override
-    public ComplaintDto addComplaint(ComplaintDto complaintDto) {
+    public ComplaintDto addComplaint(ComplaintDto complaintDto) throws IOException {
 
         Complaint complaint = complaintConverter.convertToComplaint(complaintDto);
 
@@ -48,8 +51,18 @@ public class ComplaintServiceImpl implements ComplaintService {
         if (user == null)
             throw new IllegalArgumentException("User does not exist !");
         complaint.setUser(user);
+        System.out.println("response 1");
+        complaint.setComplaintGalleries(null);
+        ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
+        System.out.println(" responseee 2" + response.getId());
+        try{
 
-        return complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
+           complaintGalleryService.addGallery(response.getId(), complaintDto.getComplaintGalleries());
+        }
+        catch (IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        return response;
     }
 
     @Override

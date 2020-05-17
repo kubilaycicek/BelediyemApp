@@ -12,6 +12,4 @@ public class ComplaintGalleryDto extends BaseDto {
     @Lob
     @ApiModelProperty(value = "IMAGE_URL")
     private String imageUrl;
-    @ApiModelProperty(value = "COMPLAINT")
-    private ComplaintDto complaintDto;
 }

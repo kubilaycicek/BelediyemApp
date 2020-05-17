@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table
-public class Complaint extends BaseEntity{
+public class Complaint extends BaseEntity {
 
     @Column
     private String description;
@@ -29,7 +29,9 @@ public class Complaint extends BaseEntity{
     @JoinColumn
     private ComplaintStatus complaintStatus;
 
-    @OneToMany(targetEntity = ComplaintGallery.class,fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = ComplaintGallery.class,
+            //cascade = CascadeType.PERSIST,
+            fetch = FetchType.EAGER)
     @JoinColumn
     private List<ComplaintGallery> complaintGalleries;
 }
