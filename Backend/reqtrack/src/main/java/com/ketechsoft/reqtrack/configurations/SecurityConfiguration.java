@@ -48,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().
                 authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll()//daha sonra yetkiye göre gelcekk !!!
                 .antMatchers("/api/token/register", "/api/token").permitAll()
                 .antMatchers("/api/token/login", "/api/token").permitAll()
                 .antMatchers(HttpMethod.GET, "/v2/api-docs").permitAll().antMatchers(
@@ -68,6 +69,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Bean
