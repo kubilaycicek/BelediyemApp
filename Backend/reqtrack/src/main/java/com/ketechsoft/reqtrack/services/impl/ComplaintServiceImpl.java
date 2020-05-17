@@ -5,10 +5,8 @@ import com.ketechsoft.reqtrack.converters.ComplaintConverter;
 import com.ketechsoft.reqtrack.converters.ComplaintStatusConverter;
 import com.ketechsoft.reqtrack.converters.UserConverter;
 import com.ketechsoft.reqtrack.dtos.ComplaintDto;
-import com.ketechsoft.reqtrack.models.Category;
-import com.ketechsoft.reqtrack.models.Complaint;
-import com.ketechsoft.reqtrack.models.ComplaintStatus;
-import com.ketechsoft.reqtrack.models.User;
+import com.ketechsoft.reqtrack.dtos.ComplaintGalleryDto;
+import com.ketechsoft.reqtrack.models.*;
 import com.ketechsoft.reqtrack.repositories.*;
 import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
 import com.ketechsoft.reqtrack.services.ComplaintService;
@@ -33,7 +31,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     @Override
     public ComplaintDto addComplaint(ComplaintDto complaintDto) throws IOException {
-
+        ///TODO: Burası Baştan yazılmalı !!!!!!!!
         Complaint complaint = complaintConverter.convertToComplaint(complaintDto);
 
         Category category = categoryRepository.findById(complaintDto.getCategoryDto().getId());
@@ -51,18 +49,14 @@ public class ComplaintServiceImpl implements ComplaintService {
         if (user == null)
             throw new IllegalArgumentException("User does not exist !");
         complaint.setUser(user);
-        System.out.println("response 1");
-        complaint.setComplaintGalleries(null);
-        ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
-        System.out.println(" responseee 2" + response.getId());
-        try{
+        complaint.setComplaintGalleries(null);//Resimleri çevirip kayıt ediyoruz.
 
-           complaintGalleryService.addGallery(response.getId(), complaintDto.getComplaintGalleries());
-        }
-        catch (IOException ex){
-            System.out.println(ex.getMessage());
-        }
+        ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
+
+        complaintGalleryService.addGallery(response.getId(), complaintDto.getComplaintGalleries());
+
         return response;
+        ///TODO: Burası Baştan yazılmalı !!!!!!!!
     }
 
     @Override
