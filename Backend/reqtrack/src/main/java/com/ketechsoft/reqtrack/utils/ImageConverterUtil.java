@@ -40,7 +40,7 @@ public class ImageConverterUtil {
 
         Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
 
-        filePath = Paths.get(root.toString(),"src", "main", "resources","complaintFiles",java.util.UUID.randomUUID()+ ".jpg");
+        filePath = Paths.get(root.toString(),"src", "main", "resources", "static","images",java.util.UUID.randomUUID()+ ".jpg");
 
         ImageConverterUtil.ConvertBase64ToImageFile(base64String,filePath.toFile().getAbsolutePath());
 
