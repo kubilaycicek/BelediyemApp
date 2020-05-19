@@ -19,23 +19,15 @@ import java.util.List;
 @Service
 public class ComplaintGalleryServiceImpl implements ComplaintGalleryService {
 
-    private final ComplaintRepository complaintRepository;
     private final ComplaintGalleryRepository complaintGalleryRepository;
-    private final ModelMapper modelMapper;
 
     @Override
-    public void addGallery(long complaintId, List<ComplaintGalleryDto> complaintGalleryDtoList) throws IOException {
-        Complaint complaint = complaintRepository.findById(complaintId);
-        if (complaint != null) {
-            for (ComplaintGalleryDto complaintGalleryDto : complaintGalleryDtoList) {
-                ComplaintGallery complaintGallery = new ComplaintGallery();
-                complaintGallery.setImageUrl(complaintGalleryDto.getImageUrl());
-                complaintGallery.setComplaint(complaint);
-                complaintGalleryRepository.save(complaintGallery);
-
-            }
-        } else {
-            throw new IllegalArgumentException("Complaint does not exist");
+    public void addGallery(Complaint complaint, List<ComplaintGalleryDto> complaintGalleryDtoList)  {
+        for (ComplaintGalleryDto complaintGalleryDto : complaintGalleryDtoList) {
+            ComplaintGallery complaintGallery = new ComplaintGallery();
+            complaintGallery.setImageUrl(complaintGalleryDto.getImageUrl());
+            complaintGallery.setComplaint(complaint);
+            complaintGalleryRepository.save(complaintGallery);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.ketechsoft.reqtrack.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,6 +17,6 @@ public class ComplaintGallery extends BaseEntity {
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn
+    @JsonIgnore
     private Complaint complaint;
 }

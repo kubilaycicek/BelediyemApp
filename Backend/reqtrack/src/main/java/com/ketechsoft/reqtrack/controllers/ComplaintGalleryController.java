@@ -2,6 +2,7 @@ package com.ketechsoft.reqtrack.controllers;
 
 import com.ketechsoft.reqtrack.constants.Mappings;
 import com.ketechsoft.reqtrack.dtos.ComplaintGalleryDto;
+import com.ketechsoft.reqtrack.models.Complaint;
 import com.ketechsoft.reqtrack.models.ComplaintGallery;
 import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class ComplaintGalleryController {
 
     @PostMapping("/{complaintID}")
     public void addComplaintGallery(@RequestBody List<ComplaintGalleryDto> complaintGalleryDTOList, @PathVariable(name = "complaintID") long complaintID) throws IOException {
-        complaintGalleryService.addGallery(complaintID, complaintGalleryDTOList);
+        complaintGalleryService.addGallery(null, complaintGalleryDTOList);
     }
 
     @GetMapping("/complaintID")

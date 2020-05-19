@@ -31,8 +31,8 @@ public class Complaint extends BaseEntity {
     @JoinColumn
     private ComplaintStatus complaintStatus;
 
-    @OneToMany(targetEntity = ComplaintGallery.class,
-            fetch = FetchType.EAGER)
-    @JoinColumn
+    @OneToMany(targetEntity = ComplaintGallery.class,mappedBy = "complaint",
+           fetch = FetchType.EAGER)
+    //@JoinColumn
     private List<ComplaintGallery> complaintGalleries = new ArrayList<>();
 }

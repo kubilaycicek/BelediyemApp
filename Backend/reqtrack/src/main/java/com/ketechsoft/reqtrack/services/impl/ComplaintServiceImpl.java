@@ -30,7 +30,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 
     @Override
-    public ComplaintDto addComplaint(ComplaintDto complaintDto) throws IOException {
+    public ComplaintDto addComplaint(ComplaintDto complaintDto){
 
         Complaint complaint = complaintConverter.convertToComplaint(complaintDto);
 
@@ -49,13 +49,9 @@ public class ComplaintServiceImpl implements ComplaintService {
         if (user == null)
             throw new IllegalArgumentException("User does not exist !");
         complaint.setUser(user);
-        complaint.setComplaintGalleries(null);
 
-       Complaint obje =  complaintRepository.save(complaint);
-
-        ComplaintDto response = complaintConverter.convertToComplaintDto(obje);
-
-        complaintGalleryService.addGallery(response.getId(), complaintDto.getComplaintGalleries());
+       ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
+       complaintGalleryService.addGallery(complaint, complaintDto.getComplaintGalleries());
 
         return response;
     }
