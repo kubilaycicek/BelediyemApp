@@ -2,6 +2,7 @@ package com.ketechsoft.reqtrack.converters;
 
 import com.ketechsoft.reqtrack.dtos.ComplaintDto;
 import com.ketechsoft.reqtrack.models.Complaint;
+import com.ketechsoft.reqtrack.models.ComplaintGallery;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -16,6 +17,7 @@ public class ComplaintConverterImpl implements ComplaintConverter {
     private final CategoryConverter categoryConverter;
     private final UserConverter userConverter;
     private final ComplaintStatusConverter complaintStatusConverter;
+    private final ComplaintGalleryConverter complaintGalleryConverter;
 
 
     private void addSkipFieldsForConvertToDto() {
@@ -27,6 +29,7 @@ public class ComplaintConverterImpl implements ComplaintConverter {
                     skip(destination.getUser());
                     skip(destination.getCategory());
                     skip(destination.getComplaintStatus());
+                   // skip(destination.getComplaintGalleries());
                 }
             });
         }
@@ -56,11 +59,12 @@ public class ComplaintConverterImpl implements ComplaintConverter {
         ComplaintDto complaintDto = modelMapper.map(complaint, ComplaintDto.class);
         if (complaint.getCategory() != null)
             complaintDto.setCategoryDto(categoryConverter.convertToCategoryDto(complaint.getCategory()));
+
         if (complaint.getUser() != null)
             complaintDto.setUserDto(userConverter.convertToUserDto(complaint.getUser()));
+
         if (complaint.getComplaintStatus() != null)
             complaintDto.setComplaintStatusDto(complaintStatusConverter.convertToComplaintStatusDto(complaint.getComplaintStatus()));
-
         return complaintDto;
     }
 
@@ -78,6 +82,14 @@ public class ComplaintConverterImpl implements ComplaintConverter {
             complaint.setUser(userConverter.convertToUser(complaintDto.getUserDto()));
         if (complaintDto.getComplaintStatusDto() != null)
             complaint.setComplaintStatus(complaintStatusConverter.convertToComplaintStatus(complaintDto.getComplaintStatusDto()));
+/*
+        if (complaintDto.getComplaintGalleries() != null & complaintDto.getComplaintGalleries().size() > 0) {
+            complaintDto.getComplaintGalleries()
+                    .forEach(galleryDto ->
+                            complaint
+                                    .addGallery(complaintGalleryConverter.convertToComplaintGallery(galleryDto)));
+        }
+        */
 
         return complaint;
     }

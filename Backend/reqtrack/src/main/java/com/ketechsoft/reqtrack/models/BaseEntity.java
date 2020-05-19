@@ -2,11 +2,13 @@ package com.ketechsoft.reqtrack.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode()
 @Data
 @MappedSuperclass
 @JsonIgnoreProperties({"creationDate", "lastModifiedDate"})

@@ -1,9 +1,11 @@
 package com.ketechsoft.reqtrack.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
+@EqualsAndHashCode(callSuper = true)
 
 @Data
 @Entity
@@ -13,9 +15,7 @@ public class ComplaintGallery extends BaseEntity {
     @Lob
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.EAGER
-            //,cascade = CascadeType.PERSIST
-    )
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private Complaint complaint;
 }

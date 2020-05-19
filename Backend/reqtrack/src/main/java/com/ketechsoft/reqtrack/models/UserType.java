@@ -2,10 +2,13 @@ package com.ketechsoft.reqtrack.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+
+@EqualsAndHashCode(callSuper = true)
 
 @Data
 @Entity

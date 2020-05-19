@@ -4,7 +4,6 @@ import com.ketechsoft.reqtrack.constants.Mappings;
 import com.ketechsoft.reqtrack.dtos.UserDto;
 import com.ketechsoft.reqtrack.models.User;
 import com.ketechsoft.reqtrack.services.UserService;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +21,11 @@ public class UserController {
     }
 
     @PostMapping(value = "/")
-    @ApiOperation(value = "Create Operation", response = UserDto.class)
     public UserDto addUser(@RequestBody UserDto userDTO) {
         return userService.addUser(userDTO);
     }
 
     @PutMapping("/")
-    @ApiOperation(value = "Update Operation", response = UserDto.class)
     public UserDto updateUser(@RequestBody UserDto userDTO) {
         return userService.updateUser(userDTO);
     }

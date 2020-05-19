@@ -4,7 +4,6 @@ import com.ketechsoft.reqtrack.constants.Mappings;
 import com.ketechsoft.reqtrack.dtos.ComplaintGalleryDto;
 import com.ketechsoft.reqtrack.models.ComplaintGallery;
 import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
-import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(Mappings.COMPLAINT_GALLERY_PATH)
-@Api(description = "Complaint Gallery APIs")
 public class ComplaintGalleryController {
 
     private final ComplaintGalleryService complaintGalleryService;

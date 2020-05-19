@@ -11,4 +11,6 @@ public interface ComplaintService {
     ComplaintDto updateStatus(ComplaintDto ComplaintDto);
     ComplaintDto getById(long complaintID);
     List<Complaint> getAll();
+    List<Complaint> getAllByUserId(long userId);
+
 }

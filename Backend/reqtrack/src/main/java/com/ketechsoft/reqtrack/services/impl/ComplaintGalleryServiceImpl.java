@@ -29,9 +29,10 @@ public class ComplaintGalleryServiceImpl implements ComplaintGalleryService {
         if (complaint != null) {
             for (ComplaintGalleryDto complaintGalleryDto : complaintGalleryDtoList) {
                 ComplaintGallery complaintGallery = new ComplaintGallery();
-                complaintGallery.setImageUrl(ImageConverterUtil.saveImageAndGetImageUrlToString(complaintGalleryDto.getImageUrl()));
+                complaintGallery.setImageUrl(complaintGalleryDto.getImageUrl());
                 complaintGallery.setComplaint(complaint);
                 complaintGalleryRepository.save(complaintGallery);
+
             }
         } else {
             throw new IllegalArgumentException("Complaint does not exist");

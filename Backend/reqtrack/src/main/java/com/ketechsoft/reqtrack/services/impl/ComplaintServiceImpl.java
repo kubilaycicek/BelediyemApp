@@ -31,7 +31,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     @Override
     public ComplaintDto addComplaint(ComplaintDto complaintDto) throws IOException {
-        ///TODO: Burası Baştan yazılmalı !!!!!!!!
+
         Complaint complaint = complaintConverter.convertToComplaint(complaintDto);
 
         Category category = categoryRepository.findById(complaintDto.getCategoryDto().getId());
@@ -49,14 +49,15 @@ public class ComplaintServiceImpl implements ComplaintService {
         if (user == null)
             throw new IllegalArgumentException("User does not exist !");
         complaint.setUser(user);
-        complaint.setComplaintGalleries(null);//Resimleri çevirip kayıt ediyoruz.
+        complaint.setComplaintGalleries(null);
 
-        ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
+       Complaint obje =  complaintRepository.save(complaint);
+
+        ComplaintDto response = complaintConverter.convertToComplaintDto(obje);
 
         complaintGalleryService.addGallery(response.getId(), complaintDto.getComplaintGalleries());
 
         return response;
-        ///TODO: Burası Baştan yazılmalı !!!!!!!!
     }
 
     @Override
@@ -84,6 +85,13 @@ public class ComplaintServiceImpl implements ComplaintService {
     public List<Complaint> getAll() {
         ArrayList<Complaint> list = new ArrayList<>();
         complaintRepository.findAll().iterator().forEachRemaining(complaint -> list.add(complaint));
+        return list;
+    }
+
+    @Override
+    public List<Complaint> getAllByUserId(long userId) {
+        ArrayList<Complaint> list = new ArrayList<>();
+        complaintRepository.findAllByUserId(userId).iterator().forEachRemaining(complaint -> list.add(complaint));
         return list;
     }
 }

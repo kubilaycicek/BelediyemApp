@@ -34,7 +34,7 @@ public class ImageConverterUtil {
             System.out.println("Exception while reading the Image " + ioe);
         }
     }
-
+/*
     public static String saveImageAndGetImageUrlToString(String base64String) throws IOException {
         Path filePath;
 
@@ -49,4 +49,6 @@ public class ImageConverterUtil {
 
         return filePath.getFileName().toString();
     }
+    */
+
 }

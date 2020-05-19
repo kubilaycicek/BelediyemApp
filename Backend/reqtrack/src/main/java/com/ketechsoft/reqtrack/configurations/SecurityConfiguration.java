@@ -48,23 +48,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()//daha sonra yetkiye göre gelcekk !!!
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/api/token/register", "/api/token").permitAll()
                 .antMatchers("/api/token/login", "/api/token").permitAll()
-                .antMatchers(HttpMethod.GET, "/v2/api-docs").permitAll().antMatchers(
-                HttpMethod.GET,
-                "/",
-                "/v2/api-docs",           // swagger
-                "/webjars/**",            // swagger-ui webjars
-                "/swagger-resources/**",  // swagger-ui resources
-                "/configuration/**",      // swagger configuration
-                "/*.html",
-                "/favicon.ico",
-                "/**/*.html",
-                "/**/*.css",
-                "/**/*.js",
-                "/images/**"
-        ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

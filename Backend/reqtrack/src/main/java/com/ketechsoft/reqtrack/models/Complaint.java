@@ -1,12 +1,14 @@
 package com.ketechsoft.reqtrack.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table
@@ -30,8 +32,7 @@ public class Complaint extends BaseEntity {
     private ComplaintStatus complaintStatus;
 
     @OneToMany(targetEntity = ComplaintGallery.class,
-            //cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER)
     @JoinColumn
-    private List<ComplaintGallery> complaintGalleries;
+    private List<ComplaintGallery> complaintGalleries = new ArrayList<>();
 }
