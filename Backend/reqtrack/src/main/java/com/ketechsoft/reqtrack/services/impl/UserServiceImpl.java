@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     public UserDto addUser(UserDto userDto) {
         User user = userConverter.convertToUser(userDto);
         user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        user.setUserType(userTypeRepository.findById(userDto.getId()));
+        user.setUserType(userTypeRepository.findById(userDto.getUserTypeDto().getId()));
         return userConverter.convertToUserDto(userRepository.save(user));
     }
 

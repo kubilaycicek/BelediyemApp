@@ -6,6 +6,7 @@ import com.ketechsoft.reqtrack.converters.ComplaintStatusConverter;
 import com.ketechsoft.reqtrack.converters.UserConverter;
 import com.ketechsoft.reqtrack.dtos.ComplaintDto;
 import com.ketechsoft.reqtrack.dtos.ComplaintGalleryDto;
+import com.ketechsoft.reqtrack.dtos.ComplaintUpdateDto;
 import com.ketechsoft.reqtrack.models.*;
 import com.ketechsoft.reqtrack.repositories.*;
 import com.ketechsoft.reqtrack.services.ComplaintGalleryService;
@@ -30,7 +31,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 
     @Override
-    public ComplaintDto addComplaint(ComplaintDto complaintDto){
+    public ComplaintDto addComplaint(ComplaintDto complaintDto) {
 
         Complaint complaint = complaintConverter.convertToComplaint(complaintDto);
 
@@ -50,22 +51,29 @@ public class ComplaintServiceImpl implements ComplaintService {
             throw new IllegalArgumentException("User does not exist !");
         complaint.setUser(user);
 
-       ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
-       complaintGalleryService.addGallery(complaint, complaintDto.getComplaintGalleries());
+        ComplaintDto response = complaintConverter.convertToComplaintDto(complaintRepository.save(complaint));
+        complaintGalleryService.addGallery(complaint, complaintDto.getComplaintGalleries());
 
         return response;
     }
 
     @Override
-    public ComplaintDto updateStatus(ComplaintDto complaintDto) {
-        Complaint complaint = complaintRepository.findById(complaintDto.getId());
+    public ComplaintDto updateStatusAndCategory(ComplaintUpdateDto complaintUpdateDto) {
+        Complaint complaint = complaintRepository.findById(complaintUpdateDto.getComplaintId());
         if (complaint != null) {
             ComplaintStatus complaintStatus = complaintStatusRepository
-                    .findById(complaintDto.getComplaintStatusDto().getId());
+                    .findById(complaintUpdateDto.getStatusId());
             if (complaintStatus != null)
                 complaint.setComplaintStatus(complaintStatus);
             else
-                throw new IllegalArgumentException("Complaint Status does not exist !");
+                throw new IllegalArgumentException("Complaint Status does not exist !" + complaintUpdateDto.getStatusId());
+
+            Category category = categoryRepository.findById(complaintUpdateDto.getCategoryId());
+            if (category != null)
+                complaint.setCategory(category);
+            else
+                throw new IllegalArgumentException("Complaint Category does not exist !" + complaintUpdateDto.getCategoryId());
+
         } else
             throw new IllegalArgumentException("Complaint does not exist");
 

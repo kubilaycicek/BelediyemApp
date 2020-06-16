@@ -852,7 +852,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODk5MTYyMzIsImV4cCI6MTU5MDAwMjYzMn0.jEdqSLAqBXAjhwc5UmqKj9k6uWWxKExBh2gVCqCl8ls",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1OTIyMTUwODAsImV4cCI6MTU5MjMwMTQ4MH0.khZOONwnJgio7f0IP6z42SU3tVaD4YnEAA5j4lKW6vc",
 									"type": "string"
 								}
 							]
@@ -881,7 +881,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODk5MTUwMTAsImV4cCI6MTU5MDAwMTQxMH0.bZ4uo0z7HVEG4mTNhaRQA2-aaDS1ek15pM4GUODCO6o",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJVU0VSIn1dLCJpYXQiOjE1ODk5MzA1MDQsImV4cCI6MTU5MDAxNjkwNH0.CsgHczstw87aipJkQsyKlUVDDJxNJqBft8o1CIVldvw",
 									"type": "string"
 								}
 							]

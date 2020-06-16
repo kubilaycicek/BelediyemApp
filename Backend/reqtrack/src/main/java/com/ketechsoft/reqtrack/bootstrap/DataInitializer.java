@@ -35,6 +35,7 @@ public class DataInitializer implements CommandLineRunner {
         rgsDto.setEmail("korteks");
         rgsDto.setPhone("5544062486");
         rgsDto.setUserTypeDto(userTypeService.getById(1));
+
         userService.addUser(rgsDto);
 
         Department department = new Department();
@@ -52,6 +53,8 @@ public class DataInitializer implements CommandLineRunner {
         complaintStatus.setName("Status - 1");
         complaintStatus.setDescription("Test");
         complaintStatusRepository.save(complaintStatus);
+
+
 
 
     }

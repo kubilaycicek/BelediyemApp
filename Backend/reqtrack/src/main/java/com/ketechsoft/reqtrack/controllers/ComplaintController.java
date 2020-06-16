@@ -2,6 +2,7 @@ package com.ketechsoft.reqtrack.controllers;
 
 import com.ketechsoft.reqtrack.constants.Mappings;
 import com.ketechsoft.reqtrack.dtos.ComplaintDto;
+import com.ketechsoft.reqtrack.dtos.ComplaintUpdateDto;
 import com.ketechsoft.reqtrack.models.Complaint;
 import com.ketechsoft.reqtrack.services.ComplaintService;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +24,9 @@ public class ComplaintController {
         return ResponseEntity.ok(complaintService.addComplaint(complaintDto));
     }
 
-    @PutMapping("/")
-    public ResponseEntity<ComplaintDto> updateStatus(@RequestBody ComplaintDto complaintDTO) {
-        return ResponseEntity.ok(complaintService.updateStatus(complaintDTO));
+    @PutMapping("/updateStatusAndCategory")
+    public ResponseEntity<ComplaintDto> updateStatus(@RequestBody ComplaintUpdateDto complaintUpdateDto) {
+        return ResponseEntity.ok(complaintService.updateStatusAndCategory(complaintUpdateDto));
     }
 
     @GetMapping("/{complaintID}")
