@@ -29,10 +29,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto addUser(UserDto userDto) {
-        User user = userConverter.convertToUser(userDto);
-        user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        user.setUserType(userTypeRepository.findById(userDto.getUserTypeDto().getId()));
-        return userConverter.convertToUserDto(userRepository.save(user));
+        if (!isThereUserByTcNumber(userDto.getTcNumber())) {
+            User user = userConverter.convertToUser(userDto);
+            user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+            user.setUserType(userTypeRepository.findById(userDto.getUserTypeDto().getId()));
+            return userConverter.convertToUserDto(userRepository.save(user));
+        }else{
+            return  null;
+        }
     }
 
     @Override
@@ -63,21 +67,31 @@ public class UserServiceImpl implements UserService {
         userRepository.findAll().iterator().forEachRemaining(user -> list.add(user));
         return list;
     }
-
+    private boolean isThereUserByTcNumber(String tcNumber){
+        User user =userRepository.findByTcNumber(tcNumber);
+        if (user!=null){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     public RegistrationResultDto register(RegistrationDto registrationDTO) {
         try {
-            User user = new User();
-            user.setEmail(registrationDTO.getEmail());
-            user.setName(registrationDTO.getName());
-            user.setSurname(registrationDTO.getSurname());
-            user.setPassword(bCryptPasswordEncoder.encode(registrationDTO.getPassword()));
-            user.setUserType(userTypeRepository.findById(1));
-            user.setTcNumber(registrationDTO.getTcNumber());
-            user.setPhone(registrationDTO.getPhone());
-            userRepository.save(user);
-            return new RegistrationResultDto("succes", true);
-
+            if (!isThereUserByTcNumber(registrationDTO.getTcNumber())){
+                User user = new User();
+                user.setEmail(registrationDTO.getEmail());
+                user.setName(registrationDTO.getName());
+                user.setSurname(registrationDTO.getSurname());
+                user.setPassword(bCryptPasswordEncoder.encode(registrationDTO.getPassword()));
+                user.setUserType(userTypeRepository.findById(1));
+                user.setTcNumber(registrationDTO.getTcNumber());
+                user.setPhone(registrationDTO.getPhone());
+                userRepository.save(user);
+                return new RegistrationResultDto("succes", true);
+            }else{
+                return new RegistrationResultDto("unsucces this record is available ", false);
+            }
         } catch (Exception e) {
             log.error("REGISTRATION=>", e);
             return new RegistrationResultDto("unsucces", false);
