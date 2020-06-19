@@ -13,5 +13,6 @@ public interface ComplaintService {
     ComplaintDto getById(long complaintID);
     List<Complaint> getAll();
     List<Complaint> getAllByUserId(long userId);
+    List<Complaint> getAllByDepartmentId(long departmentId);
 
 }

@@ -39,6 +39,11 @@ public class ComplaintController {
         return ResponseEntity.ok(complaintService.getAll());
     }
 
+    @GetMapping("/list/department/{departmentId}")
+    public ResponseEntity<List<Complaint>> getAllComplaintByDepartmentId(@PathVariable long departmentId) {
+        return ResponseEntity.ok(complaintService.getAllByDepartmentId(departmentId));
+    }
+
     @GetMapping("/list/user/{userId}")
     public ResponseEntity<List<Complaint>> getAllComplaintByUserId(@PathVariable long userId) {
         return ResponseEntity.ok(complaintService.getAllByUserId(userId));

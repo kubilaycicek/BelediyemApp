@@ -1,11 +1,7 @@
 package com.ketechsoft.reqtrack.services.impl;
 
-import com.ketechsoft.reqtrack.converters.CategoryConverter;
 import com.ketechsoft.reqtrack.converters.ComplaintConverter;
-import com.ketechsoft.reqtrack.converters.ComplaintStatusConverter;
-import com.ketechsoft.reqtrack.converters.UserConverter;
 import com.ketechsoft.reqtrack.dtos.ComplaintDto;
-import com.ketechsoft.reqtrack.dtos.ComplaintGalleryDto;
 import com.ketechsoft.reqtrack.dtos.ComplaintUpdateDto;
 import com.ketechsoft.reqtrack.models.*;
 import com.ketechsoft.reqtrack.repositories.*;
@@ -96,6 +92,13 @@ public class ComplaintServiceImpl implements ComplaintService {
     public List<Complaint> getAllByUserId(long userId) {
         ArrayList<Complaint> list = new ArrayList<>();
         complaintRepository.findAllByUserId(userId).iterator().forEachRemaining(complaint -> list.add(complaint));
+        return list;
+    }
+
+    @Override
+    public List<Complaint> getAllByDepartmentId(long departmentId) {
+        ArrayList<Complaint> list = new ArrayList<>();
+        complaintRepository.findAllByDepartmentIdNative(departmentId).iterator().forEachRemaining(complaint -> list.add(complaint));
         return list;
     }
 }
