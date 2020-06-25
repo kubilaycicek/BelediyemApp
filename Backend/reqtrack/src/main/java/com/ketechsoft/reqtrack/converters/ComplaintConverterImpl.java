@@ -29,7 +29,6 @@ public class ComplaintConverterImpl implements ComplaintConverter {
                     skip(destination.getUser());
                     skip(destination.getCategory());
                     skip(destination.getComplaintStatus());
-                   // skip(destination.getComplaintGalleries());
                 }
             });
         }

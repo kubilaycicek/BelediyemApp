@@ -23,6 +23,7 @@ public class UserTypeConverterImpl implements UserTypeConverter {
     public UserType convertToUserType(UserTypeDto userTypeDto) {
         if (userTypeDto == null)
             return null;
+
         return modelMapper.map(userTypeDto, UserType.class);
     }
 }

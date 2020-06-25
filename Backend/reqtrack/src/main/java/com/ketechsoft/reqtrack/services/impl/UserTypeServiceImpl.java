@@ -37,7 +37,9 @@ public class UserTypeServiceImpl implements UserTypeService {
 
     @Override
     public UserTypeDto getById(long userTypeId) {
-        return userTypeConverter.convertToUserTypeDto(userTypeRepository.findById(userTypeId));
+        UserType userType = userTypeRepository.findById(userTypeId);
+        System.out.println(userType.getName());
+        return userTypeConverter.convertToUserTypeDto(userType);
     }
 
     @Override

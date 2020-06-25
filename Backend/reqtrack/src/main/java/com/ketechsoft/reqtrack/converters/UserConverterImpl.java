@@ -49,11 +49,7 @@ public class UserConverterImpl implements UserConverter {
         addSkipFieldsForConvertToDto();
 
         UserDto userDto = modelMapper.map(user, UserDto.class);
-        System.out.println("test 2");
-        if (userDto.getUserTypeDto() != null) {
-            System.out.println(userDto.getUserTypeDto().getName());
-            userDto.setUserTypeDto(userTypeConverter.convertToUserTypeDto(user.getUserType()));
-        }
+        userDto.setUserTypeDto(userTypeConverter.convertToUserTypeDto(user.getUserType()));
 
         return userDto;
     }
@@ -66,9 +62,7 @@ public class UserConverterImpl implements UserConverter {
         addSkipFieldsForConvertToDomain();
 
         User user = modelMapper.map(userDto, User.class);
-        System.out.println("test -1 ");
         if (user.getUserType() != null) {
-            System.out.println(user.getUserType().getName());
             user.setUserType(userTypeConverter.convertToUserType(userDto.getUserTypeDto()));
 
         }
