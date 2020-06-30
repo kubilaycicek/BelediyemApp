@@ -1,0 +1,69 @@
+<div class="mapSize" *ngIf="complaint">
+  <angular-yandex-map [center]="[lan,len]" [zoom]="18">
+    <angular-yandex-placemark [geometry]="[lan,len]"></angular-yandex-placemark>
+  </angular-yandex-map>
+</div>
+<div class="row pt-2" >
+  <div class="col-md-4 p-2" *ngFor="let image of _album; let i=index">
+    <div class="thumbnail">
+        <img [src]="image.thumb" (click)="open(i)" class="img-rounded imageSize">
+    </div>
+  </div>
+</div>
+<form class="kt-form" (ngSubmit)="submit(formDirective)" [formGroup]="formValidation" #formDirective="ngForm">
+  <div class="kt-portlet__body">
+    <div class="kt-form__section kt-form__section--first">
+      <div class="form-group kt-form__group row">
+        <label class="col-lg-3 col-form-label">Gönderen İsim Soyisim:</label>
+        <div class="col-lg-6 example-container">
+          <mat-form-field>
+            <input readonly formControlName="complaintUserName" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group kt-form__group row">
+        <label class="col-lg-3 col-form-label">İstek :</label>
+        <div class="col-lg-6 example-container">
+          <mat-form-field>
+            <input readonly formControlName="complaintDescription" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group kt-form__group row">
+        <label class="col-lg-3 col-form-label">Kategori :</label>
+        <div class="col-lg-6 example-container">
+          <mat-form-field>
+            <mat-label>Kategori Seçin</mat-label>
+            <mat-select  formControlName="categorySelect">
+              <mat-option *ngFor="let category of categories" [value]="category.id" >{{category.name}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group kt-form__group row">
+        <label class="col-lg-3 col-form-label">İstek Durum:</label>
+        <div class="col-lg-6 example-container">
+          <mat-form-field>
+            <mat-label>Durum Seçin</mat-label>
+            <mat-select  formControlName="statusSelect">
+              <mat-option *ngFor="let status of complaintStatuses" [value]="status.id">{{status.name}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="kt-portlet__foot">
+    <div class="kt-form__actions kt-form__actions">
+      <div class="row">
+        <div class="col-lg-3" *ngIf="alertStatus">
+          <ngb-alert dismissible="true" [type]="alertType">{{ alertMessage }}</ngb-alert>
+        </div>
+        <div class="col-lg-6">
+          <button mat-raised-button color="accent">Tamam</button>&nbsp;
+          <button mat-raised-button type="reset">İptal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

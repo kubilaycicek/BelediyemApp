@@ -1,0 +1,117 @@
+<div class="kt-portlet">
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-caption">
+			<div class="kt-portlet__head-title">
+				<span class="kt-portlet__head-icon kt-hide">
+					<i class="la la-gear"></i>
+				</span>
+				<h3 class="kt-portlet__head-text">
+					Kullanıcı Ekle
+				</h3>
+			</div>
+		</div>
+	</div>
+	<form class="kt-form" (ngSubmit)="submit(formDirective)" [formGroup]="formValidation" #formDirective="ngForm">
+		<div class="kt-portlet__body">
+			<div class="kt-form__section kt-form__section--first">
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">TC giriniz:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="userTcNumber" matInput placeholder="TC Giriniz.">
+							<mat-hint align="start">Lütfen TC giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">İsim:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="userName" matInput placeholder="İsim Giriniz.">
+							<mat-hint align="start">Lütfen isim giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Soyisim:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="userSurname" matInput placeholder="Soyisim Giriniz.">
+							<mat-hint align="start">Lütfen soyisim giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Email adresi:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="userEmail" matInput type="email" placeholder="Email Giriniz.">
+							<mat-hint align="start">Email Giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Şifre :</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="userPassword" matInput placeholder="Şifre Giriniz"
+								[type]="hide ? 'password' : 'text'">
+							<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}
+							</mat-icon>
+							<mat-hint align="start">Lütfen şifre giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">İletişim:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<mat-icon matPrefix>local_phone</mat-icon>
+							<input formControlName="userPhone" type="tel" matInput placeholder="Telefon Numarası">
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Adress:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field class="example-full-width">
+							<mat-label>Adres</mat-label>
+							<textarea formControlName="userAddress" matInput></textarea>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Kullanıcı Türü Seçin:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<mat-label>Kullanıcı Türü Seçin</mat-label>
+							<mat-select formControlName="userUserTypeSelect" [(value)]="selected">
+								<mat-option *ngFor="let userType of userTypes" [value]="userType">
+									{{userType.name}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="kt-form__group form-group row">
+					<label class="col-lg-3 col-form-label">Durum:</label>
+					<mat-slide-toggle [checked]="state" (change)="state ? state=false : state=true">
+						{{state ? 'Aktif' : 'Pasif'}}
+					</mat-slide-toggle>
+				</div>
+			</div>
+		</div>
+		<div class="kt-portlet__foot">
+			<div class="kt-form__actions kt-form__actions">
+				<div class="row">
+					<div class="col-lg-3" *ngIf="alertStatus">
+						<ngb-alert dismissible="true" [type]="alertType">{{ alertMessage }}</ngb-alert>
+					</div>
+					<div class="col-lg-6">
+						<button mat-raised-button color="accent">Tamam</button>&nbsp;
+						<button mat-raised-button type="reset">İptal</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

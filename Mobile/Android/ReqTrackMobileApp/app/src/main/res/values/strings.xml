@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Belediyem Yanimda</string>
+
+    <string name="edtTxtTcNo">TC Kimlik No</string>
+    <string name="edtTxtPassword">Şifre</string>
+    <string name="edtTxtName">Ad</string>
+    <string name="edtTxtSurname">Soyad</string>
+    <string name="edtTxtEmail">E-Posta</string>
+    <string name="edtTxtPhoneNo">Cep Numarası</string>
+    <string name="edtTxtPasswordAgain">Şifre Tekrar</string>
+
+    <string name="btnRegister">Kayıt Ol</string>
+    <string name="btnLogin">Giriş Yap</string>
+
+    <string name="openDrawer">Nagivation Drawer Open</string>
+    <string name="closeDrawer">Nagivation Drawer Close</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="newComplaint">Yeni Başvuru</string>
+    <string name="complaint">Başvurularım</string>
+    <string name="profile">Profil</string>
+    <string name="home">Anasayfa</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

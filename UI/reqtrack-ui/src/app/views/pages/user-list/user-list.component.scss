@@ -1,0 +1,26 @@
+.mat-table {
+  overflow-x: scroll;
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding: 0px 10px;
+  vertical-align: middle;
+}
+
+.mat-header-cell{
+  background-color: #eeeeee; 
+}
+
+
+.mat-row:nth-child(n+1){
+  background-color: #eeeeee;
+}
+.mat-row:not(:nth-child(2n+1)){
+  background-color:#ffffff;
+}
+::ng-deep {
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+     background-color: white;
+  }
+}

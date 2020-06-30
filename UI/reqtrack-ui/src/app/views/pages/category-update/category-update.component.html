@@ -1,0 +1,67 @@
+<div class="kt-portlet">
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-caption">
+			<div class="kt-portlet__head-title">
+				<span class="kt-portlet__head-icon kt-hide">
+					<i class="la la-gear"></i>
+				</span>
+				<h3 class="kt-portlet__head-text">
+					Kategori Düzenle
+				</h3>
+			</div>
+		</div>
+	</div>
+	<form class="kt-form" (ngSubmit)="submit(formDirective)" [formGroup]="formValidation" #formDirective="ngForm">
+		<div class="kt-portlet__body">
+			<div class="kt-form__section kt-form__section--first">
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Kategori İsmi:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="categoryName" matInput placeholder="Kategori İsmi Giriniz.">
+							<mat-hint align="start">Lütfen kategori ismi giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Açıklama:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<input formControlName="categoryDescription" matInput placeholder="Açıklama Giriniz.">
+							<mat-hint align="start">Lütfen açıklama giriniz.</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<label class="col-lg-3 col-form-label">Departman Seçin:</label>
+					<div class="col-lg-6 example-container">
+						<mat-form-field>
+							<mat-label>Departman Seçin</mat-label>
+							<mat-select  formControlName="departmentSelect">
+							  <mat-option *ngFor="let department of departments" [value]="department.id">{{department.name}}</mat-option>
+							</mat-select>
+						  </mat-form-field>
+					</div>
+				</div>
+				<div class="kt-form__gr oup form-group row">
+					<label class="col-lg-3 col-form-label">Durum:</label>
+					<mat-slide-toggle [checked]="state" (change)="state ? state=false : state=true">
+						{{state ? 'Aktif' : 'Pasif'}}
+					</mat-slide-toggle>
+				</div>
+			</div>
+		</div>
+		<div class="kt-portlet__foot">
+			<div class="kt-form__actions kt-form__actions">
+				<div class="row">
+					<div class="col-lg-3" *ngIf="alertStatus">
+						<ngb-alert dismissible="true" [type]="alertType">{{ alertMessage }}</ngb-alert>
+					</div>
+					<div class="col-lg-6">
+						<button mat-raised-button color="accent">Tamam</button>&nbsp;
+						<button mat-raised-button type="reset">İptal</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>

@@ -1,0 +1,63 @@
+<div class="kt-portlet__head">
+  <div class="kt-portlet__head-caption">
+    <div class="kt-portlet__head-title">
+      <span class="kt-portlet__head-icon kt-hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="kt-portlet__head-text">
+        Kategori Listele
+      </h3>
+    </div>
+  </div>
+</div>
+<div class="col-md-2 float-right">
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Arama</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Arama">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+<div class="table-container">
+  <mat-table #sort="matSort" class="table table-hover" [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Id </mat-header-cell>
+      <mat-cell *matCellDef="let row; let i = index;" class="text-center">
+        {{paginator.pageIndex * paginator.pageSize + i + 1}} </mat-cell>
+    </ng-container>
+    <!-- Progress Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> İsim </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-center"> {{row.name}} </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Açıklama </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-center"> {{row.description}} </mat-cell>
+    </ng-container>
+    <!-- Durum Column
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Durum </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="text-center"> 
+          <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--{{ getStatusType(row.status) }} kt-badge--wide">{{ row.status }}</span>
+        </mat-cell>
+      </ng-container>
+      -->
+    <!-- Operation Column -->
+    <ng-container matColumnDef="operation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> İşlem </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="text-center">
+        <button routerLink='/category-update/{{row.id}}' mat-icon-button color="primary" matTooltip="Düzenle">
+          <mat-icon>create</mat-icon>
+        </button>&nbsp;
+        <button mat-icon-button color="warn" matTooltip="Sil" type="button">
+          <mat-icon>delete</mat-icon>
+        </button>&nbsp;
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns;  sticky: true;"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
