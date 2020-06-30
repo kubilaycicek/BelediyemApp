@@ -1,4 +1,4 @@
 # Belediyem Yanımda Uygulaması
-* API
+* API     -> [Kubilay!](https://www.linkedin.com/in/kubilaycicekk/)
 * UI
 * Android
