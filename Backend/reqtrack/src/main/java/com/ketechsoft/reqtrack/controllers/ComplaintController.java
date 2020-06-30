@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@RequiredArgsConstructor
+@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(Mappings.COMPLAINT_PATH)
 public class ComplaintController {
 
@@ -35,8 +36,7 @@ public class ComplaintController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Complaint>> getAllComplaint() {
-        return ResponseEntity.ok(complaintService.getAll());
+    public ResponseEntity<List<Complaint>> getAllComplaint() { return ResponseEntity.ok(complaintService.getAll());
     }
 
     @GetMapping("/list/department/{departmentId}")

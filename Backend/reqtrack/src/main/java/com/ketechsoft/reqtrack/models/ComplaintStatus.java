@@ -16,10 +16,8 @@ import java.util.List;
 public class ComplaintStatus extends BaseEntity  {
     @Column
     private String name;
-
     @Column
     private String description;
-
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Complaint.class,  mappedBy = "complaintStatus")
     private List<Complaint> complaintList;

@@ -7,13 +7,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table
 public class Complaint extends BaseEntity {
-
     @Column
     private String description;
 
@@ -33,6 +31,5 @@ public class Complaint extends BaseEntity {
 
     @OneToMany(targetEntity = ComplaintGallery.class,mappedBy = "complaint",
            fetch = FetchType.EAGER)
-    //@JoinColumn
     private List<ComplaintGallery> complaintGalleries = new ArrayList<>();
 }

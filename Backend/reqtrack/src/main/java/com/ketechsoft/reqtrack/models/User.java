@@ -3,7 +3,6 @@ package com.ketechsoft.reqtrack.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,18 +11,25 @@ import java.util.List;
 @Entity
 @Table
 public class User extends BaseEntity {
+
     @Column
     private String name;
+
     @Column
     private String surname;
+
     @Column
     private String phone;
+
     @Column
     private String tcNumber;
+
     @Column
     private String email;
+
     @Column
     private String password;
+
     @Column
     private String address;
 

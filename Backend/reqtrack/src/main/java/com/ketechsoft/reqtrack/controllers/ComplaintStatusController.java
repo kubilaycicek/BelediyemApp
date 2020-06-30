@@ -9,8 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RequiredArgsConstructor
+@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(Mappings.COMPLAINT_STATUS_PATH)
 public class ComplaintStatusController {
 

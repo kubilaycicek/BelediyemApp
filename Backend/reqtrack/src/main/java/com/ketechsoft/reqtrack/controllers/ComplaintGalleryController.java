@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@RequiredArgsConstructor
+@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(Mappings.COMPLAINT_GALLERY_PATH)
 public class ComplaintGalleryController {
 

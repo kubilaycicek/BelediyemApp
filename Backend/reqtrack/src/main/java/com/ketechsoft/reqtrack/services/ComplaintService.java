@@ -14,5 +14,4 @@ public interface ComplaintService {
     List<Complaint> getAll();
     List<Complaint> getAllByUserId(long userId);
     List<Complaint> getAllByDepartmentId(long departmentId);
-
 }

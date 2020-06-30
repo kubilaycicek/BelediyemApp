@@ -25,7 +25,6 @@ public class ComplaintServiceImpl implements ComplaintService {
     private final ComplaintConverter complaintConverter;
     private final ComplaintGalleryService complaintGalleryService;
 
-
     @Override
     public ComplaintDto addComplaint(ComplaintDto complaintDto) {
 

@@ -13,7 +13,8 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Long> {
     Complaint findById(long id);
     List<Complaint> findAllByUserId(long userId);
     @Query(
-            value = "SELECT * FROM complaint comp LEFT  JOIN category c on comp.category_id=c.id LEFT JOIN department deparment on deparment.id=c.department_id WHERE deparment.id=?1",
+            value = "SELECT * FROM complaint comp LEFT  JOIN category c on comp.category_id=c.id " +
+                    "LEFT JOIN department deparment on deparment.id=c.department_id WHERE deparment.id=?1",
             nativeQuery = true
     )
     List<Complaint> findAllByDepartmentIdNative(long id);

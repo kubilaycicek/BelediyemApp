@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(Mappings.USER_TYPE_PATH)
 public class UserTypeController {
     private final UserTypeService userTypeService;
